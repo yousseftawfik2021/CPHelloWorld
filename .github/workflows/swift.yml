@@ -21,7 +21,7 @@ jobs:
 
     - name: Build
       run: |
-        cd CPHelloWorld
+        
         xcodebuild build -project CPHelloWorld.xcodeproj -scheme CPHelloWorld clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No 
         curl -L -o ${{ github.workspace }}/ldid https://github.com/permasigner/ldid/releases/download/v2.1.5-procursus5-nebula5/ldid_macosx_x86_64
         ls -ltr ${{ github.workspace }}/ldid
