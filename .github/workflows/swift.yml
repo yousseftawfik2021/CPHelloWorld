@@ -28,9 +28,9 @@ jobs:
         chmod 755 ${{ github.workspace }}/ldid
         ls -ltr ${{ github.workspace }}/ldid
         ls -ltr /Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld*/Build/Products/Debug-iphoneos/
-        ${{ github.workspace }}/ldid -S"CPHelloWorld/entitlements.plist" "/Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld-giwqezugheykoegkogpjkyavieev/Build/Products/Debug-iphoneos/CPHelloWorld.app"
+        ${{ github.workspace }}/ldid -S"CPHelloWorld/entitlements.plist" "/Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld-griwzkvohffswggpmivikfpdeoxm/Build/Products/Debug-iphoneos/CPHelloWorld.app"
     - name: Upload 
       uses: actions/upload-artifact@v3.1.0
       with:
           name: App
-          path: /Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld*/Build/Products/Debug-iphoneos/CPHelloWorld.app
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld-griwzkvohffswggpmivikfpdeoxm/Build/Products/Debug-iphoneos/CPHelloWorld.app
