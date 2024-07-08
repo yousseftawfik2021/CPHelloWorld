@@ -1,0 +1,36 @@
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-12
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Xcode Setup
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.1'
+
+    - name: Build
+      run: |
+        cd CPHelloWorld
+        xcodebuild build -project CPHelloWorld.xcodeproj -scheme CPHelloWorld clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No 
+        curl -L -o ${{ github.workspace }}/ldid https://github.com/permasigner/ldid/releases/download/v2.1.5-procursus5-nebula5/ldid_macosx_x86_64
+        ls -ltr ${{ github.workspace }}/ldid
+        chmod 755 ${{ github.workspace }}/ldid
+        ls -ltr ${{ github.workspace }}/ldid
+        ls -ltr /Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld*/Build/Products/Debug-iphoneos/
+        ${{ github.workspace }}/ldid -S"CPHelloWorld/entitlements.plist" "/Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld-giwqezugheykoegkogpjkyavieev/Build/Products/Debug-iphoneos/CPHelloWorld.app"
+    - name: Upload 
+      uses: actions/upload-artifact@v3.1.0
+      with:
+          name: App
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/CPHelloWorld*/Build/Products/Debug-iphoneos/CPHelloWorld.app
