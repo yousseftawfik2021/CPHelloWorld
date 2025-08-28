@@ -450,6 +450,7 @@ if ( $handle )
 
 			$name = SQLite3::escapeString( $group );
 			$name = $Arabic->ar2en($name);
+$name=str_replace("'", "", $name);
 print("zzzzzzzzz");
 print($name);
 			
