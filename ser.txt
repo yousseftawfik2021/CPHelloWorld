@@ -450,8 +450,10 @@ if ( $handle )
 
 			$name = SQLite3::escapeString( $group );
 			$name = $Arabic->ar2en($name);
-
-			$query .= "(" . $group_value[ "id" ] . "," .
+print("zzzzzzzzz");
+print($name);
+			
+$query .= "(" . $group_value[ "id" ] . "," .
 							$group_value[ "parent_id" ] . "," .
 							$group_value[ "number" ] . ",'" .
 							$name . "'," .
